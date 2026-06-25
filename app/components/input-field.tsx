@@ -6,6 +6,9 @@ import { Field } from 'formik';
 interface InputFieldProps {
   label?: string;
   id?: string;
+  name?: string;
+  placeholder?: string;
+  type?: string;
 }
 
 export default function InputField({ label, id, ...rest }: InputFieldProps) {
