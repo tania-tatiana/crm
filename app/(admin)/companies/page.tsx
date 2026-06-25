@@ -12,10 +12,6 @@ interface PageProps {}
 export default function Page({}: PageProps) {
   return (
     <>
-      <Header>Companies</Header>
-      <Toolbar action={<AddCompanyButton />}>
-        <SearchInput />
-      </Toolbar>
       <CompanyTable>
         <CompanyRow
           id={1}
