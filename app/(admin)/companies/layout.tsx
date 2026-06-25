@@ -15,8 +15,8 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <>
-      {modal}
       {header}
+      {modal}
       <main>
         {toolbar}
         {children}
