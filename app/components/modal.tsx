@@ -7,9 +7,15 @@ export interface ModalProps {
   children?: React.ReactNode;
   show: boolean;
   onClose: () => void;
+  size?: 'md' | 'xl';
 }
 
-export default function Modal({ show, children, onClose }: ModalProps) {
+export default function Modal({
+  show,
+  children,
+  onClose,
+  size = 'md',
+}: ModalProps) {
   return (
     <Transition.Root as={Fragment} show={show}>
       <Dialog
@@ -28,7 +34,11 @@ export default function Modal({ show, children, onClose }: ModalProps) {
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-        <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+        <Dialog.Panel
+          className={`relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 w-full ${
+            size === 'xl' ? 'sm:max-w-2xl' : 'sm:max-w-md'
+          }`}
+        >
           {children}
         </Dialog.Panel>
       </Dialog>

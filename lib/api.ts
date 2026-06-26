@@ -192,8 +192,20 @@ export const getCompanies = async (init?: RequestInit): Promise<Company[]> => {
   );
 };
 
-export const getCompany = (id: string, init?: RequestInit) => {
-  return sendRequest<Company>(buildUrl('companies', id), init);
+//export const getCompany = (id: string, init?: RequestInit) => {
+//  return sendRequest<Company>(buildUrl('companies', id), init);
+//};
+
+export const getCompany = async (id: string): Promise<Company> => {
+  const companies = await getCompanies();
+
+  const company = companies.find((c) => c.id === id);
+
+  if (!company) {
+    throw new Error('Company not found');
+  }
+
+  return company;
 };
 
 //export const getPromotions = async (
@@ -231,4 +243,18 @@ export const getPromotions = async (
       },
     ]),
   );
+};
+
+export const createPromotion = async (
+  data: Omit<Promotion, 'id'>,
+  init?: RequestInit,
+) => {
+  return sendRequest<Promotion>(buildUrl('promotions'), {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      ...(init && init.headers),
+      'content-type': 'application/json',
+    },
+  });
 };
