@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
-import StatusLabel, { Status } from '@/app/components/status-label';
+import StatusLabel from '@/app/components/status-label';
 import { Company } from '@/lib/api';
 import Link from 'next/link';
 

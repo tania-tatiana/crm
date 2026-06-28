@@ -196,8 +196,11 @@ export const getCompanies = async (init?: RequestInit): Promise<Company[]> => {
 //  return sendRequest<Company>(buildUrl('companies', id), init);
 //};
 
-export const getCompany = async (id: string): Promise<Company> => {
-  const companies = await getCompanies();
+export const getCompany = async (
+  id: string,
+  init?: RequestInit,
+): Promise<Company> => {
+  const companies = await getCompanies(init);
 
   const company = companies.find((c) => c.id === id);
 
